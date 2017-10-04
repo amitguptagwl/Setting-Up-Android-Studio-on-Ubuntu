@@ -5,9 +5,9 @@ I have faced so many issues while installing Android Studio on my Ubuntu 17.04 6
 
 ## Terminologies
 
-**AS**- Android Studio. It is an IDE which will help you to make, build, and run your project.
-**AVD**- Android Virtual Device. Consider it as a virtual android mobile running on your machine. You'll require a good graphics support to use it.
-**Emulator**- Requires to run an AVD on your machine.
+* **AS**- Android Studio. It is an IDE which will help you to make, build, and run your project.
+* **AVD**- Android Virtual Device. Consider it as a virtual android mobile running on your machine. You'll require a good graphics support to use it.
+* **Emulator**- Requires to run an AVD on your machine.
 
 ## Install JDK
   
