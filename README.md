@@ -24,7 +24,6 @@ $sudo apt-get install oracle-java7-set-default
 
 ## Install Android Studio
 
-
 [Download](http://developer.android.com/sdk/index.html) the package. Place it on desire location. You are gonna need it to install Android Studio and run it every time. So better not to leave it in `/tmp` or `~/Downloads` folder. Now Navigate to `android-studio/bin/` in and run Android Studio from terminal using
 
 ```
@@ -114,18 +113,28 @@ installation was successful.
 
 ## Install SDK Platforms, tools, system images
 
-Open the SDK manager from tool panel or from File > Settings > Appearance & Behaviour > System Settings > Android SDK. Check following in the below image and install them using "Apply" button.
+Open the android Studio from `android-studio/bin/studio.sh`. Open the SDK manager from tool panel or from File > Settings > Appearance & Behaviour > System Settings > Android SDK. Check following in the below image and install them using "Apply" button.
 
+![Android Studio SDK Manager platform settings](/img/platforms.png?raw=true "Android Studio SDK Manager platform settings")
+![Android Studio SDK Manager tools settings](/img/tools.png?raw=true "Android Studio SDK Manager tools settings")
 
-
-
-Open the android Studio from `android-studio/bin/studio.sh`
+Now open AVD (Android Virtual Device) Manager from the tool palate or from 
 
 ## Troubleshooting
-* Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root. Otherwise it'll create the project directory in home folder of particular user.
+* Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root or sudo. Otherwise it'll create the project directory in home folder of particular user.
+
+* If you see following while running your application
+
+```
+09:10	Gradle build finished in 468ms
+09:11	Session 'MainActivity': Error Installing APKs
+```
+then go to `File > Settings > Build, Execution, Deployment > Instant Run` and uncheck "Enable Instant Run to ..."
+
 
 
 ## References:
 
 * https://github.com/uw-it-aca/spacescout-android/wiki/1.-Setting-Up-Android-Studio-on-Ubuntu
 * https://stackoverflow.com/questions/4974568/how-do-i-launch-the-android-emulator-from-the-command-line
+* https://stackoverflow.com/questions/38450717/session-app-error-while-installing-apk
