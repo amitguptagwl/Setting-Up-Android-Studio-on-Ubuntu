@@ -151,10 +151,17 @@ or
 $export ANDROID_SDK_ROOT=~/Android/Sdk/ && emulator '@'`emulator -list-avds`
 ```
 
-Once the AVD is started using emulator you can even install an APK on that
+Once the AVD is started using emulator you can even install an APK on that.
+
 ```
 $~/Android/Sdk/platform-tools/adb install <path_to_your_APK>
 ```
+
+To enable GPU Emulation
+```
+$~/Android/Sdk/tools/emulator @<AVD name> -gpu on
+```
+
 ## Troubleshooting
 ### Project not found
 Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root or sudo. Otherwise it'll create the project directory in home folder of particular user.
