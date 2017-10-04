@@ -118,12 +118,49 @@ Open the android Studio from `android-studio/bin/studio.sh`. Open the SDK manage
 ![Android Studio SDK Manager platform settings](/img/platforms.png?raw=true "Android Studio SDK Manager platform settings")
 ![Android Studio SDK Manager tools settings](/img/tools.png?raw=true "Android Studio SDK Manager tools settings")
 
-Now open AVD (Android Virtual Device) Manager from the tool palate or from 
+Now open AVD (Android Virtual Device) Manager from the tool palate or from Tools > Android > AVG Manager
 
+If you already added soem device before you'll see the window like this otherwise empty window asking to create your first AVD.
+
+![Android Virtual Device Manager](/img/avd.png?raw=true "Android Virtual Device Manager")
+
+Create Virtual Device. It'll open a window to configure virtual drive. 
+
+![Android Virtual Device Manager Configuration](/img/avd_config.png?raw=true "Android Virtual Device Manager Configuration")
+
+Select the type of device. You can create your own device too. And then click next. It'll ask you to select the image. If you haven't downloaded any image before, you can't go next. I have already downloaded 3 images that you can see in below screen.
+
+![Android Virtual Device Manager System image](/img/avd_sys_img.png?raw=true "Android Virtual Device Manager System image")
+
+Click next > Final. Once selected images are downloaded you can check them in `~\Android\Sdk\system-images` folder. You can check all the AVDs in "~/.android/avd " folder or using following command;
+
+```
+~/Android/Sdk/tools/emulator -list-avds
+```
+
+## Running Emulator
+
+When you will run your application it'll automatically open the emulator with specified AVD. However to open it from command line;
+```
+$~/Android/Sdk/tools/emulator @<AVD name>
+```
+
+or
+
+```
+$export ANDROID_SDK_ROOT=~/Android/Sdk/ && emulator '@'`emulator -list-avds`
+```
+
+Once the AVD is started using emulator you can even install an APK on that
+```
+$~/Android/Sdk/platform-tools/adb install <path_to_your_APK>
+```
 ## Troubleshooting
-* Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root or sudo. Otherwise it'll create the project directory in home folder of particular user.
+### Project not found
+Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root or sudo. Otherwise it'll create the project directory in home folder of particular user.
 
-* If you see following while running your application
+### Error Installing APKs
+If you see following while running your application
 
 ```
 09:10	Gradle build finished in 468ms
@@ -131,7 +168,37 @@ Now open AVD (Android Virtual Device) Manager from the tool palate or from
 ```
 then go to `File > Settings > Build, Execution, Deployment > Instant Run` and uncheck "Enable Instant Run to ..."
 
+![Android Studio SDK Manager Instant Run settings](/img/instant_run.png?raw=true "Android Studio SDK Manager Instant Run settings")
 
+### Faulty Emulator
+If you see following error while running emulator
+
+```
+libGL error: unable to load driver: i965_dri.so
+libGL error: driver pointer missing
+:
+:
+```
+then first check if `/usr/lib64/libstdc++.so.6` presents. If not install following;
+
+```
+$sudo apt-get install lib64stdc++6 mesa-utils
+```
+
+Now replace with the file comes with Android emulator.
+
+```
+$mv ~/Android/Sdk/emulator/lib64/libstdc++/libstdc++.so.6 ~/Android/Sdk/emulator/lib64/libstdc++/libstdc++.so.6.bak
+$sudo ln -s /usr/lib64/libstdc++.so.6 ~/Android/Sdk/emulator/lib64/libstdc++
+```
+
+### Device offline
+Whenever you get "error: device offline" means that connection with emulator & adb bridge has been broken. stops & start adb bridge again with following commands
+```
+adb kill-server
+
+adb start-server
+```
 
 ## References:
 
