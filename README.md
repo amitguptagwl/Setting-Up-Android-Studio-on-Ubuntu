@@ -112,6 +112,17 @@ Id Name                 State
 
 installation was successful. 
 
+## Install SDK Platforms, tools, system images
+
+Open the SDK manager from tool panel or from File > Settings > Appearance & Behaviour > System Settings > Android SDK. Check following in the below image and install them using "Apply" button.
+
+
+
+
+Open the android Studio from `android-studio/bin/studio.sh`
+
+## Troubleshooting
+* Android studio makes project folder by default in home directory until you specify another location. Ensure that you are not running android studio from any other user or from root. Otherwise it'll create the project directory in home folder of particular user.
 
 
 ## References:
